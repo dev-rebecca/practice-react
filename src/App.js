@@ -1,11 +1,15 @@
-import { Fragment } from 'react';
+import { Fragment } from "react";
 
-import Header from './components/Layout/Header';
+import Header from "./components/Layout/Header";
+import Hats from "./components/Hats/Hats";
 
 function App() {
   return (
     <Fragment>
       <Header />
+      <section>
+        <Hats />
+      </section>
     </Fragment>
   );
 }

@@ -1,5 +1,5 @@
 import Card from "../UI/Card";
-// import HatItem from "./HatItem/HatItem";
+import HatItem from "./HatItem/HatItem";
 import classes from "./AvailableHats.module.css";
 
 const AvailableHats = () => {
@@ -30,14 +30,22 @@ const AvailableHats = () => {
     },
   ];
 
-  const hatsList = DUMMY_HATS.map((hat) => <li>{hat.name}</li>);
+  const hatsList = DUMMY_HATS.map((hat) => (
+    <HatItem
+      id={hat.id}
+      key={hat.id}
+      name={hat.name}
+      description={hat.description}
+      price={hat.price}
+    />
+  ));
 
   return (
-    <Card>
-      <section className={classes.hats}>
+    <section className={classes.hats}>
+      <Card>
         <ul>{hatsList}</ul>
-      </section>
-    </Card>
+      </Card>
+    </section>
   );
 };
 

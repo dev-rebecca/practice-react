@@ -8,18 +8,18 @@ import Hats from "./components/Hats/Hats";
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
 
-  const openCartHandler = props => {
+  const openCartHandler = (props) => {
     setCartIsShown(true);
-  }
+  };
 
-  const closeCartHandler = props => {
+  const closeCartHandler = (props) => {
     setCartIsShown(false);
-  }
+  };
 
   return (
     <CartProvider>
-      {cartIsShown && <Cart onCloseCart={closeCartHandler}/>}
-      <Header onShowCart={openCartHandler}/>
+      {cartIsShown && <Cart onCloseCart={closeCartHandler} />}
+      <Header onShowCart={openCartHandler} />
       <section>
         <Hats />
       </section>

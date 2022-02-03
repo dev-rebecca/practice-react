@@ -1,16 +1,27 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import Input from "../../UI/Input";
 import classes from "./HatItemForm.module.css";
 
 const HatItemForm = (props) => {
+  const [amountIsValid, setAmountIsValid] = useState(true);
+
   const amountInputRef = useRef();
 
-  const submitHandler = event => {
+  const submitHandler = (event) => {
     event.preventDefault();
     const enteredAmount = amountInputRef.current.value;
-    
-    console.log(enteredAmount);
+    const enteredAmountNumber = +enteredAmount;
+
+    if (
+      enteredAmount.trim().length === 0 ||
+      enteredAmountNumber < 1 ||
+      enteredAmountNumber > 5
+    ) {
+      amountIsValid(false);
+      return;
+    }
+    props.onAddToCart(enteredAmountNumber);
   };
 
   return (
@@ -28,6 +39,7 @@ const HatItemForm = (props) => {
         }}
       />
       <button className={classes.button}>+ Add</button>
+      {!amountIsValid && <p>Invalid amount</p>}
     </form>
   );
 };
